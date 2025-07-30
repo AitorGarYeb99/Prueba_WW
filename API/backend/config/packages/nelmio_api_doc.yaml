@@ -1,0 +1,18 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: 'WEWelcome API'
+            description: 'Documentación de la API RESTful de restaurantes'
+            version: '1.0.0'
+        components:
+            securitySchemes:
+                ApiKeyAuth:
+                    type: apiKey
+                    in: header
+                    name: X-API-KEY
+        security:
+            - ApiKeyAuth: []
+
+    areas: # Mantén esto como está si ya lo tienes
+        default:
+            path_patterns: [ '^/api' ]

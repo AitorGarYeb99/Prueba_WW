@@ -1,0 +1,25 @@
+security:
+  enable_authenticator_manager: true
+
+  providers:
+    in_memory:
+      memory: null
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+
+    api_doc:  # <- Añadir este
+      pattern: ^/api/doc
+      security: false
+
+    main:
+      pattern: ^/api
+      stateless: true
+      custom_authenticators:
+        - App\Security\ApiKeyAuthenticator
+
+  access_control:
+    - { path: ^/api/doc, roles: PUBLIC_ACCESS }
+    - { path: ^/api, roles: ROLE_USER }
